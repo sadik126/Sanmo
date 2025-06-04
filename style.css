@@ -484,68 +484,277 @@ ul {
   font-family: dm sans, sans-serif;
 }
 
-/* Footer */
-footer {
-  background-color: #2c3e50;
-  color: #fff;
-  padding: 50px 50px 20px;
+/* accordion  */
+
+.accordion-wrapper {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  color: white;
+  font-family: "Orbitron", sans-serif;
+  padding: 50px 20px;
 }
 
-.footer-content {
+.faq-title {
+  font-size: 18px;
+  display: inline-block;
+  border: 1px solid #40dde3;
+  padding: 5px 20px;
+  border-radius: 20px;
+  color: #40dde3;
+  margin-bottom: 15px;
+}
+
+.faq-subtitle {
+  font-size: 1rem;
+  color: #ccc;
+  max-width: 700px;
+  margin: auto auto 40px;
+}
+
+.accordion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: 20px;
+}
+
+.accordion-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 15px 20px;
+  text-align: left;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 30px;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  gap: 1rem; /* optional, space between text & icon */
 }
 
-.footer-logo {
+.accordion-header span {
+  display: inline-block;
+}
+
+.accordion-header .icon1 {
   display: flex;
   align-items: center;
-  font-size: 1.8em;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  font-size: 1rem;
   font-weight: bold;
+  border: 1px solid #40dde3;
+  border-radius: 50%;
+  color: #40dde3;
+  flex-shrink: 0; /* icon যেন ছোট না হয় */
 }
 
-.footer-logo img {
-  height: 50px;
-  margin-right: 15px;
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-top: 10px;
 }
 
-.footer-links h3,
-.footer-contact h3 {
-  margin-bottom: 20px;
-  font-size: 1.4em;
+.accordion-item.active .accordion-body {
+  max-height: 200px;
 }
 
-.footer-links ul li {
-  margin-bottom: 10px;
+.accordion-body p {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.accordion-item.active .accordion-header .icon1 {
+  transform: rotate(45deg);
+  background-color: rgba(64, 221, 227, 0.1);
+}
+
+/* cta button  */
+
+.cta-block {
+  display: flex;
+  flex-direction: row; /* Horizontal layout for text and form */
+  align-items: center; /* Vertically align items */
+  justify-content: center; /* Center horizontally */
+  /* Max width of the content */
+  width: 90%;
+  margin: 0 auto;
+  padding: 60px 40px; /* Padding inside the block */
+  /* Subtle neon glow shadow */
+  gap: 40px; /* Space between title and form */
+  position: relative;
+  /* For the glowing vertical line */
+}
+
+/* Glowing vertical line on the right side */
+.cta-block::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px; /* Thickness of the line */
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #00ffff,
+    transparent
+  ); /* Neon gradient */
+  box-shadow: 0 0 15px #00ffff; /* Glow effect */
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* CTA Title Styling */
+.cta-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  background: linear-gradient(
+    92deg,
+    #292929 -2.37%,
+    #fff 27.47%,
+    #676767 51.64%,
+    #fff 70.68%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Slightly less prominent than full white */
+}
+
+/* Form Container Styling */
+.cta-form {
+  display: flex;
+  gap: 15px; /* Space between input and button */
+  align-items: center; /* Vertically align input and button */
+  flex-grow: 1; /* Allows form to take available space */
+  max-width: 450px; /* Max width for the form elements */
+}
+
+/* Email Input Field */
+.email-input {
+  flex-grow: 1; /* Allows input to take available space */
+  padding: 15px 20px;
+  border: 1px solid rgba(0, 255, 255, 0.3); /* Subtle neon border */
+  border-radius: 8px;
+  background-color: #0d0d0f; /* Very dark background for input */
+  color: #e0e0e0; /* Light text color */
+  font-size: 1.05em;
+  outline: none; /* Remove default outline */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-input::placeholder {
+  color: #888; /* Placeholder text color */
+}
+
+.email-input:focus {
+  border-color: #00ffff; /* Brighter neon border on focus */
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4); /* Glow on focus */
+}
+
+/* Get Notified Button */
+.notify-btn {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #00ffff; /* Vibrant neon blue/green */
+  color: #0b0b0f; /* Dark text for contrast */
+  font-size: 1.05em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* Subtle text shadow on button */
+}
+
+.notify-btn:hover {
+  background-color: #33ffff; /* Lighter on hover */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Stronger glow on hover */
+}
+
+/* Footer */
+.site-footer {
+  /* Darker background for the footer */
+  padding: 30px 40px; /* Padding around the footer content */
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle top border */
+  font-size: 0.9em;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Distribute items with space between them */
+  align-items: center; /* Vertically align items in the center */
+  max-width: 1400px; /* Max width of the footer content */
+  margin: 0 auto; /* Center the footer content */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+/* Copyright Text */
+.footer-copyright p {
+  margin: 0; /* Remove default paragraph margin */
+  white-space: nowrap; /* Prevent text from wrapping prematurely */
+}
+
+/* Footer Navigation Links */
+.footer-links ul {
+  display: flex;
+  list-style: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+  gap: 30px; /* Space between links */
 }
 
 .footer-links ul li a {
-  color: #ccc;
-  transition: color 0.3s ease;
+  color: #b0b0b0; /* Link color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth hover effect */
+  white-space: nowrap; /* Prevent link text from wrapping */
 }
 
 .footer-links ul li a:hover {
-  color: #fff;
+  color: #00ffff; /* Neon glow on hover */
 }
 
-.footer-contact p {
-  margin-bottom: 10px;
-  color: #ccc;
+/* Social Media Section */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between "Social" text and icons, and between icons */
+  white-space: nowrap; /* Keep social section on one line if possible */
 }
 
-.footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.footer-social span {
+  font-weight: 500;
+  color: #e0e0e0; /* Slightly brighter text for "Social" */
 }
 
-.footer-bottom p {
-  font-size: 0.9em;
-  color: #aaa;
+.footer-social a {
+  color: #b0b0b0; /* Icon color */
+  font-size: 1.2em; /* Icon size */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.footer-social a:hover {
+  color: #00ffff; /* Neon glow on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
 /* Responsive Enhancements */

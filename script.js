@@ -20,3 +20,16 @@ window.addEventListener('scroll', () => {
         navbar.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
     }
 });
+
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+
+        // Change icon
+        const icon = header.querySelector('.icon');
+        icon.textContent = item.classList.contains('active') ? '×' : '+';
+    });
+});
