@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Landing page loaded!');
 });
 
-// উদাহরণস্বরূপ, যদি তুমি স্ক্রল করার সময় navbar-এর ব্যাকগ্রাউন্ড পরিবর্তন করতে চাও:
+
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
